@@ -25,7 +25,7 @@ class Game{
         $('#game').append('<div id="'+item.name+'"></div>');
         
         //item name
-         $('#'+item.name).append('<span>'+item.name+'</span> ');
+         $('#'+item.name).append('<span>'+item.name+'</span><img height="50" width="50" src="img/'+item.getImg()+'">');
         
         //buying item controls
         $('#'+item.name).append('<button onclick="'+item.name+'.buyItem(1)" id="'+item.name+'Buy">Buy 1 $<span id="'+item.name+'Cost">'+item.cost+'</span></button> ');
@@ -52,7 +52,7 @@ pays=ammount paid per time
 time=time to get pays ammount in seconds
 */
 class Item{
-    constructor(name, cost, costFactor, count, pays, payFactor, time){
+    constructor(name, cost, costFactor, count, pays, payFactor, time, image){
         this.name = name;
         this.cost = cost;
         this.count = count;
@@ -60,6 +60,7 @@ class Item{
         this.time = time;
         this.costFactor = costFactor;
         this.payFactor = payFactor;
+        this.image = image;
     }
     
     buyItem (amount){
@@ -85,6 +86,10 @@ class Item{
         
     }
     
+    getImg(){
+        return this.image;
+    }
+    
     getPays(){
         return this.pays;
     }
@@ -99,10 +104,12 @@ game.start();
 
 
 //constructor(name, cost, costFactor, count, pays, payFactor, time)
-var bacon = new Item('bacon', 10, 1.25, 0, 20, 1.05, 5);
+var bacon = new Item('bacon', 10, 1.25, 0, 20, 1.05, 5, 'bacon.png');
 game.addItem(bacon);
-var ham = new Item('ham', 20, 1.25, 0, 30, 1.05, 10);
+var ham = new Item('ham', 20, 1.25, 0, 30, 1.05, 10, 'ham.png');
 game.addItem(ham);
+var chop = new Item('chop', 30, 1.35, 0, 40, 1.05, 20, 'chop.png');
+game.addItem(chop);
 
 
 
